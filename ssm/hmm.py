@@ -262,7 +262,7 @@ class HMM(object):
         pi0 = self.init_state_distn.initial_state_distn
         Ps = self.transitions.transition_matrices(data, input, mask, tag)
         log_likes = self.observations.log_likelihoods(data, input, mask, tag)
-        return viterbi(pi0, Ps, log_likes)
+        return viterbi(pi0, Ps, log_likes), Ps
 
     @ensure_args_not_none
     def filter(self, data, input=None, mask=None, tag=None):
